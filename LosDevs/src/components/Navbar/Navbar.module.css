@@ -1,0 +1,34 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #361459;
+    color: #fff;
+    padding: .8rem;
+    box-shadow: #222 0px -2px 15px 0px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    letter-spacing: .1rem;
+    padding: .5rem;
+}
+
+.spanLogo {
+    padding: .05rem .3rem;
+    background-color: yellow;
+    font-weight: bold;
+    border-radius: .5rem;
+    color: #361459;
+}
+
+.navList {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding: .5rem;
+}
+
+.navList a:hover {
+    background-color: #762ea6;
+}

@@ -1,0 +1,22 @@
+.footerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .5rem;
+    background-color: #361459;
+    color: #fff;
+    box-shadow: #222 0px -2px 15px 0px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    letter-spacing: .1rem;
+    padding: .5rem;
+}
+
+.spanLogo {
+    padding: .05rem .3rem;
+    background-color: yellow;
+    border-radius: .5rem;
+    color: #361459;
+}
