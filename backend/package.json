@@ -1,0 +1,20 @@
+{
+  "name": "galary-app",
+  "version": "1.0.0",
+  "description": "Uma Galeria de fotos online.",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon ./src/app.js",
+    "start": "node ./src/app.js"
+  },
+  "author": "Master Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
