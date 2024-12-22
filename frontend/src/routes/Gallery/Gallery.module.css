@@ -1,0 +1,28 @@
+.containerCards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: .5rem .8rem;
+}
+
+.containerGalery h1 {
+    font-size: 2rem;
+}
+
+.containerGalery p {
+    font-size: 1rem;
+}
+
+.containerCards::after {
+    content: '';
+    width: 300px;
+}
+
+.containerGalery {
+    text-align: center;
+}

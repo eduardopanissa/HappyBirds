@@ -9,6 +9,7 @@ import Home from './routes/Home/Home'
 import Login from './routes/login/Login'
 import About from './routes/About/About'
 import Register from './routes/Register/Register'
+import Gallery from './routes/Gallery/Gallery'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
+      },
+      {
+        path: '/gallery',
+        element: <Gallery />
       },
       {
         path: '/about',

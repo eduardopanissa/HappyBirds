@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-Trata-se de um”” blog?” com as seguintes funcionalidades:
+Trata-se de um ” blog?” com as seguintes funcionalidades:
 
 CRUD (Criar, Ler, Atualizar, Deletar).
 
@@ -20,6 +20,8 @@ HTML5
 
 CSS3
 
-JavaScript
+JavaScript/React JS
+
+Node/Express
 
 Git (para controle de versão e colaboração).

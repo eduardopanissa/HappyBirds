@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     justify-content: center;
     height: 100vh;
     color: #333;
@@ -11,13 +12,11 @@
 .divContainer h1 {
     font-size: 2rem;
     color: #361459;
-    margin-bottom: 0.5rem;
 }
 
 .divContainer p {
     font-size: 1rem;
     color: #555;
-    margin-bottom: .5rem;
 }
 
 .formContainer {

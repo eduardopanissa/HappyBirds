@@ -8,7 +8,7 @@ const Register = () => {
 
     const [inName, setInName] = useState('');
     const [inEmail, setInEmail] = useState('');
-    const [inCelNumber, setInCelNumber] = useState('');
+    const [inCPFNumber, setInCPFNumber] = useState('');
     const [inPassword, setInPassword] = useState('');
     const [inConfirmPass, setInConfirmPass] = useState('');
     const [error, setError] = useState('');
@@ -22,7 +22,7 @@ const Register = () => {
             id: Math.random(),
             inName,
             inEmail,
-            inCelNumber,
+            inCPFNumber,
             inPassword,
             inConfirmPass
         }
@@ -55,8 +55,8 @@ const Register = () => {
                     <input type="email" name="inEmail" placeholder="Digite seu email" required value={inEmail} onChange={(e) => setInEmail(e.target.value)} />
                 </label>
                 <label>
-                    <p>Celular:</p>
-                    <input type="number" name="inCelNumber" placeholder="Digite seu celular" required value={inCelNumber} onChange={(e) => setInCelNumber(e.target.value)} />
+                    <p>CPF:</p>
+                    <input type="number" name="inCelNumber" placeholder="Digite seu CPF" required value={inCPFNumber} onChange={(e) => setInCPFNumber(e.target.value)} />
                 </label>
                 <label>
                     <p>Senha:</p>
@@ -73,28 +73,6 @@ const Register = () => {
 
             {error && <p className='error'>{error}</p>}
 
-            {/* {
-                db.map((item) => (
-                    <ul key={item.id}>
-                        <li>
-                            Nome: {item.inName}
-                        </li>
-                        <li>
-                            E-mail: {item.inEmail}
-                        </li>
-                        <li>
-                            Cel: {item.inCelNumber}
-                        </li>
-                        <li>
-                            Password: {item.inPassword}
-                        </li>
-                        <li>
-                            Confirm Password: {item.inConfirmPass}
-                        </li>
-                    </ul>
-
-                ))
-            } */}
         </div>
     )
 }

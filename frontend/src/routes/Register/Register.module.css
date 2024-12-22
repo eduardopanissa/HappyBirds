@@ -11,13 +11,12 @@
 .divContainer h1 {
     font-size: 2rem;
     color: #361459;
-    margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 .divContainer p {
     font-size: 1rem;
     color: #555;
-    margin-bottom: .5rem;
 }
 
 .formContainer {
