@@ -3,8 +3,6 @@ import express from "express";
 import cors from 'cors';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-const HOSTNAME = '127.0.0.1';
 
 const users = [
         { id: "1", name: "Adriano", username: "Tomahok", password: "123456" },
@@ -67,6 +65,4 @@ app.put('/api/pictures/:id', (req, res) => {
     res.status(200).json(gallery);
 })
 
-app.listen(PORT, () => {
-    console.log(`app running at http://${HOSTNAME}:${PORT}`)
-});
+export default app;
