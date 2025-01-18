@@ -12,7 +12,7 @@ const Footer = () => {
                 </NavLink>
             </div>
             <p>
-                O maior banco de fotos sobre espécies de pássaros do mundo todo. Venha viver essa liberdade.
+                O maior banco de fotos sobre espécies de pássaros do mundo todo. Venha viver essa liberdade!
             </p>
         </footer>
     )

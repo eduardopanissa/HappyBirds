@@ -8,9 +8,9 @@ const Card = ({ img, title, description }) => {
             <h3>
                 {title}
             </h3>
-            <p>
+            {/* <p>
                 {description}
-            </p>
+            </p> */}
         </div>
     )
 }

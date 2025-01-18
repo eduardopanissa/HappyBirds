@@ -1,40 +1,51 @@
 
 import styles from './Register.module.css'
 
+import { useCreateUser } from '../../hooks/useCreateUser';
+
 import { useState } from "react"
 
 const Register = () => {
-    const [db, setDb] = useState([]);
 
-    const [inName, setInName] = useState('');
-    const [inEmail, setInEmail] = useState('');
-    const [inCPFNumber, setInCPFNumber] = useState('');
-    const [inPassword, setInPassword] = useState('');
-    const [inConfirmPass, setInConfirmPass] = useState('');
+    const createUser = useCreateUser();
+
+    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
     const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         setError('');
+        setMessage('');
 
-        const user = {
-            id: Math.random(),
-            inName,
-            inEmail,
-            inCPFNumber,
-            inPassword,
-            inConfirmPass
+        try {
+            const user = {
+                id: Math.random(),
+                name: name,
+                username: username,
+                password: password,
+            }
+
+            // validacao aqui
+            //verificacao se ha usuacrio ja cadastrado
+            //verificacao de inputs de dados
+
+            await createUser(user);
+
+            setMessage('Usuário criado com sucesso')
+
+            setName('');
+            setUsername('');
+            setPassword('');
+
+        } catch (error) {
+            setError('erro ao criar usuário', error)
         }
-        if (inPassword !== inConfirmPass) return setError('As senhas devem ser iguais!');
 
-        setDb([...db, user]);
-
-        // validacao aqui
-
-        //envio aqui
-
-        console.log(db);
     }
 
     return (
@@ -42,36 +53,34 @@ const Register = () => {
             <h1>
                 Cadastre-se para postar e acessar os conteúdos.
             </h1>
-            <p>
+            <p className={styles.pCenter}>
                 Crie sua conta, e compartilhe com a gente.
             </p>
+
+            {error && <p className='error'>{error}</p>}
+
+            {message && <p className='message'>{message}</p>}
+
             <form onSubmit={handleSubmit} className={styles.formContainer}>
                 <label>
                     <p>Nome:</p>
-                    <input type="text" name="inName" placeholder="Digite seu nome" required value={inName} onChange={(e) => setInName(e.target.value)} />
+                    <input type="text" name="name" placeholder="Digite seu nome" required value={name} onChange={(e) => setName(e.target.value)} />
                 </label>
+
                 <label>
-                    <p>E-mail:</p>
-                    <input type="email" name="inEmail" placeholder="Digite seu email" required value={inEmail} onChange={(e) => setInEmail(e.target.value)} />
+                    <p>Escolha um nome de usuário:</p>
+                    <input type="text" name="username" placeholder="Digite um nome de usuário" required value={username} onChange={(e) => setUsername(e.target.value)} />
                 </label>
-                <label>
-                    <p>CPF:</p>
-                    <input type="number" name="inCelNumber" placeholder="Digite seu CPF" required value={inCPFNumber} onChange={(e) => setInCPFNumber(e.target.value)} />
-                </label>
+
                 <label>
                     <p>Senha:</p>
-                    <input type="password" name="inPassword" placeholder="Digite uma senha" required value={inPassword} onChange={(e) => setInPassword(e.target.value)} />
+                    <input type="password" name="password" placeholder="Digite uma senha" required value={password} onChange={(e) => setPassword(e.target.value)} />
                 </label>
-                <label>
-                    <p>Confirmar senha:</p>
-                    <input type="password" name="inConfirmPass" placeholder="Digite novamente a senha" required value={inConfirmPass} onChange={(e) => setInConfirmPass(e.target.value)} />
-                </label>
+
                 <button type='submit'>
                     Cadastrar
                 </button>
             </form>
-
-            {error && <p className='error'>{error}</p>}
 
         </div>
     )

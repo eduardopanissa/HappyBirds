@@ -10,6 +10,7 @@ import Login from './routes/login/Login'
 import About from './routes/About/About'
 import Register from './routes/Register/Register'
 import Gallery from './routes/Gallery/Gallery'
+import CreatePost from './routes/CreatePost/CreatePost'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register />
+      },
+      {
+        path: '/createPost',
+        element: <CreatePost />
       }
     ]
   }

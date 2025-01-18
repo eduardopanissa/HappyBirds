@@ -32,7 +32,8 @@ p {
     padding: .2rem
 }
 
-input {
+input,
+textarea {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
@@ -41,7 +42,12 @@ input {
     box-sizing: border-box;
 }
 
-input:focus {
+textarea {
+    height: 200px;
+}
+
+input:focus,
+textarea {
     outline: none;
 }
 

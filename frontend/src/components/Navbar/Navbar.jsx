@@ -1,9 +1,8 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Navbar.module.css'
 
 import { FaBars } from "react-icons/fa6";
-// import { FaX } from "react-icons/fa6";
 
 import { NavLink } from "react-router-dom"
 
@@ -18,6 +17,20 @@ const Navbar = () => {
     const handleCloseMenu = () => {
         setToggleMenu(false);
     }
+
+    const handleResize = () => {
+        if (window.innerWidth >= 750 && toggleMenu) {
+            setToggleMenu(false);
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
+    }, [toggleMenu])
 
     return (
         <nav className={styles.navbar}>

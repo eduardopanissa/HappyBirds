@@ -5,7 +5,7 @@
     justify-content: center;
     height: 100vh;
     color: #333;
-    padding: 1rem;
+    padding: .8rem;
 }
 
 .divContainer h1 {
@@ -17,6 +17,10 @@
 .divContainer p {
     font-size: 1rem;
     color: #555;
+}
+
+.pCenter {
+    text-align: center;
 }
 
 .formContainer {
@@ -33,11 +37,11 @@
 
 @media (max-width: 768px) {
     .divContainer {
-        padding: 1rem;
+        padding: .5rem;
     }
 
     .formContainer {
-        padding: 1.5rem;
+        padding: 1rem;
     }
 
     h1 {

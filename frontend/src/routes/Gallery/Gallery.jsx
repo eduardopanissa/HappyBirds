@@ -3,7 +3,7 @@ import styles from './Gallery.module.css'
 
 import { useEffect, useState } from "react"
 
-import api from "../../services/api"
+import { useFetchDocs } from '../../hooks/useFetchDocs'
 
 import Card from "../../components/Card/Card"
 
@@ -12,20 +12,16 @@ const Gallery = () => {
     const [gallery, setGallery] = useState([])
 
     useEffect(() => {
-        getHelloApi()
+        getAssets()
     }, [])
 
-    const getHelloApi = async () => {
+    const getAssets = async () => {
         try {
-            const response = await api.get('/pictures')
-
-            const data = response.data.tbgalery;
-
-            console.log(data)
+            const fetchDocs = useFetchDocs();
+            const data = await fetchDocs();
             setGallery(data)
-
         } catch (error) {
-            console.log(error)
+            console.log('erro ao buscar assets', error)
         }
     }
 
@@ -34,6 +30,9 @@ const Gallery = () => {
             <h1>
                 Galeria
             </h1>
+            <p>
+                Aqui vai o campo de busca!
+            </p>
             <p>
                 Confira todas as espécies disponíveis
             </p>

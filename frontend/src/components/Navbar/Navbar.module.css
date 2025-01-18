@@ -1,17 +1,12 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #361459;
     color: #fff;
     padding: .8rem;
     box-shadow: #222 0px -2px 15px 0px;
-    margin-bottom: .8rem;
 }
 
 .logo {
     display: flex;
-    width: 100%;
     justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
@@ -28,11 +23,9 @@
 }
 
 .navList {
-    display: none;
     height: 0;
     overflow: hidden;
-    transition: all .3s linear;
-
+    transition: all .2s ease;
 }
 
 .navListToggle {
@@ -46,6 +39,8 @@
     background-color: #361459;
     width: 100%;
     padding: .8rem;
+    z-index: 10;
+    /*por causa da position absolute da mascara da foto*/
 }
 
 .navList a:hover {

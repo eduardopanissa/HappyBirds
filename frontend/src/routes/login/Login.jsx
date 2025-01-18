@@ -4,16 +4,17 @@ import styles from './Login.module.css'
 import { useState } from "react"
 
 const Login = () => {
-    const [inLogin, setInLogin] = useState('');
-    const [inPassword, setInPassword] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const login = [{
-            inLogin,
-            inPassword
-        }]
+        //detro de um try/catch aqui
+        const login = {
+            name,
+            password
+        }
 
         //validacao aqui
 
@@ -27,17 +28,18 @@ const Login = () => {
             <h1>
                 Entrar
             </h1>
-            <p>
+            <p className={styles.pCenter}>
                 Faça o login para ter acesso.
             </p>
+
             <form onSubmit={handleSubmit} className={styles.formContainer}>
                 <label>
                     <p>Login:</p>
-                    <input type='text' id='inLogin' placeholder='Email, Celular, Nome de usuário' required onChange={(e) => setInLogin(e.target.value)} value={inLogin} />
+                    <input type='text' name='name' placeholder='Nome, Nome de usuário' required onChange={(e) => setName(e.target.value)} value={name} />
                 </label>
                 <label>
                     <p>Senha:</p>
-                    <input type='password' id='inPassword' placeholder='Digite sua senha' required onChange={(e) => setInPassword(e.target.value)} value={inPassword} />
+                    <input type='password' name='password' placeholder='Digite sua senha' required onChange={(e) => setPassword(e.target.value)} value={password} />
                 </label>
                 <button type='submit'>
                     Entrar
