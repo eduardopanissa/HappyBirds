@@ -6,10 +6,14 @@ import { useEffect, useState } from "react"
 import { useFetchDocs } from '../../hooks/useFetchDocs'
 
 import Card from "../../components/Card/Card"
+import CardDetails from '../../components/CardDetails/CardDetails'
 
 const Gallery = () => {
 
-    const [gallery, setGallery] = useState([])
+    const [gallery, setGallery] = useState([]);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedCard, setSelectedCard] = useState(null);
 
     useEffect(() => {
         getAssets()
@@ -24,6 +28,15 @@ const Gallery = () => {
             console.log('erro ao buscar assets', error)
         }
     }
+
+    const handleClickModal = (item) => {
+        setIsModalOpen(true);
+        setSelectedCard(item);
+
+        console.log(item)
+    }
+
+
 
     return (
         <div className={styles.containerGalery}>
@@ -43,11 +56,21 @@ const Gallery = () => {
                             key={item.id}
                             img={item.image}
                             title={item.title}
-                            description={item.description}
+                            onClick={() => handleClickModal(item)}
                         />
                     ))
                 }
             </div>
+            {
+                isModalOpen && selectedCard && (
+                    <CardDetails
+                        title={selectedCard.title}
+                        image={selectedCard.image}
+                        description={selectedCard.description}
+                        onClose={() => setIsModalOpen(false)}
+                    />
+                )
+            }
         </div>
     )
 }

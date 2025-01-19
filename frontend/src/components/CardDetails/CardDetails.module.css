@@ -1,0 +1,67 @@
+.divModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, .8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divContainer {
+    padding: .2rem;
+    background-color: rgba(195, 195, 195, .7);
+    width: 95%;
+    height: 95%;
+    border-radius: .3rem;
+    overflow: auto;
+}
+
+.divContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.divHeadModal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .2rem;
+}
+
+.divImgDesc {
+    padding: .2rem;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divImgDesc img {
+    width: auto;
+    max-width: 750px;
+    max-height: 600px;
+    height: auto;
+    object-fit: contain;
+    border-radius: .3rem;
+    margin-bottom: .5rem;
+    box-shadow: 0 6px 8px 3px rgba(0, 0, 0, 0.3);
+}
+
+.divImgDesc p {
+    max-width: 750px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(90, 90, 90, .8);
+    color: #fff;
+    border-radius: .3rem;
+    padding: 1rem;
+    box-shadow: 0 6px 8px 3px rgba(0, 0, 0, 0.3);
+}
+
+.divImgDesc a {
+    padding: 1rem;
+}

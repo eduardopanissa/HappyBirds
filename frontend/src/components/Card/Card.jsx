@@ -1,16 +1,13 @@
 
 import styles from './Card.module.css'
 
-const Card = ({ img, title, description }) => {
+const Card = ({ img, title, onClick }) => {
     return (
-        <div className={styles.card}>
+        <div className={styles.card} onClick={onClick}>
             <img src={img} alt={title} className={styles.imgClass} />
             <h3>
                 {title}
             </h3>
-            {/* <p>
-                {description}
-            </p> */}
         </div>
     )
 }

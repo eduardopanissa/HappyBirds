@@ -1,8 +1,8 @@
 .card {
     background-color: #fff;
     max-width: 300px;
-    border-radius: .5rem;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    border-radius: .3rem;
+    box-shadow: 0 6px 8px 3px rgba(0, 0, 0, 0.3);
     transition: .3s ease-in-out;
     text-align: center;
     cursor: pointer;
@@ -13,11 +13,10 @@
 }
 
 .imgClass {
-    width: 100%;
-    max-width: 300px;
+    width: 250px;
     height: 300px;
     object-fit: cover;
-    border-radius: .5rem .5rem 0 0;
+    border-radius: .3rem .3rem 0 0;
     margin-bottom: .5rem;
 }
 

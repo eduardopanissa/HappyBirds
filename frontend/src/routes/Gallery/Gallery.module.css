@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: .5rem .8rem;
 }
@@ -20,7 +20,7 @@
 
 .containerCards::after {
     content: '';
-    width: 300px;
+    width: 250px;
 }
 
 .containerGalery {
