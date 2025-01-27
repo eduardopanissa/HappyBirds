@@ -9,6 +9,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: fadeIn .3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .divContainer {
@@ -62,6 +73,24 @@
     box-shadow: 0 6px 8px 3px rgba(0, 0, 0, 0.3);
 }
 
+.cardDetailH3 {
+    max-width: 750px;
+    width: 100%;
+    text-align: left;
+    padding-left: .8rem;
+}
+
 .divImgDesc a {
     padding: 1rem;
+}
+
+@media (max-width: 785px) {
+    .divHeadModal h1 {
+        font-size: 1.5rem;
+    }
+
+    .divImgDesc img {
+        width: 100%;
+
+    }
 }

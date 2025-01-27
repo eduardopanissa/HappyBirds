@@ -1,11 +1,15 @@
 .card {
     background-color: #fff;
-    max-width: 300px;
+    max-width: 250px;
     border-radius: .3rem;
     box-shadow: 0 6px 8px 3px rgba(0, 0, 0, 0.3);
-    transition: .3s ease-in-out;
+    transition: transform .3s ease, .3s ease-in-out;
     text-align: center;
     cursor: pointer;
+}
+
+.card.selected {
+    transform: scale(1.05);
 }
 
 .card:hover {
@@ -14,13 +18,15 @@
 
 .imgClass {
     width: 250px;
+    /* max-width: 250px; */
     height: 300px;
     object-fit: cover;
     border-radius: .3rem .3rem 0 0;
     margin-bottom: .5rem;
 }
 
-.card h2 {
-    padding: .3rem;
-    margin-bottom: .5rem;
+.card h3 {
+    text-align: left;
+    padding-left: .8rem;
+    font-size: 1rem;
 }

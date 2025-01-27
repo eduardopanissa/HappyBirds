@@ -4,7 +4,8 @@ import styles from './CardDetails.module.css'
 import { RiCloseLargeLine } from "react-icons/ri";
 
 const CardDetails = ({ title, image, description, onClose }) => {
-    console.log(title, description)
+
+
     return (
         <div className={styles.divModal}>
             <div className={styles.divContainer}>
@@ -18,7 +19,7 @@ const CardDetails = ({ title, image, description, onClose }) => {
                 </div>
                 <div className={styles.divImgDesc}>
                     <img src={image} alt={title} className={styles.imgModal} />
-                    <h3>
+                    <h3 className={styles.cardDetailH3}>
                         Descrição
                     </h3>
                     <p>

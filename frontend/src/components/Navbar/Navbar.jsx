@@ -30,7 +30,8 @@ const Navbar = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         }
-    }, [toggleMenu])
+    }, [toggleMenu]);
+
 
     return (
         <nav className={styles.navbar}>

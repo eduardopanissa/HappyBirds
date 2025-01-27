@@ -33,7 +33,6 @@ const Gallery = () => {
         setIsModalOpen(true);
         setSelectedCard(item);
 
-        console.log(item)
     }
 
 

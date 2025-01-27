@@ -10,6 +10,7 @@ const Card = ({ img, title, onClick }) => {
             </h3>
         </div>
     )
+
 }
 
 export default Card
