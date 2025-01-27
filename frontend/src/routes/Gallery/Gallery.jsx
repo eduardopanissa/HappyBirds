@@ -13,7 +13,9 @@ const Gallery = () => {
     const [gallery, setGallery] = useState([]);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+
     const [selectedCard, setSelectedCard] = useState(null);
+
 
     useEffect(() => {
         getAssets()
@@ -32,7 +34,6 @@ const Gallery = () => {
     const handleClickModal = (item) => {
         setIsModalOpen(true);
         setSelectedCard(item);
-
     }
 
 

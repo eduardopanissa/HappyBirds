@@ -1,19 +1,31 @@
 
+import { useState } from 'react';
 import styles from './CardDetails.module.css'
 
 import { RiCloseLargeLine } from "react-icons/ri";
 
 const CardDetails = ({ title, image, description, onClose }) => {
 
+    const [isClosing, setIsClosing] = useState(false);
+
+    const handleClickClose = () => {
+        setIsClosing(true);
+
+        setTimeout(() => {
+            onClose();
+        }, 300)
+
+    }
+
 
     return (
-        <div className={styles.divModal}>
+        <div className={`${styles.divModal} ${isClosing ? styles.fadeOut : ''}`}>
             <div className={styles.divContainer}>
                 <div className={styles.divHeadModal}>
                     <h1>
                         {title}
                     </h1>
-                    <button onClick={onClose}>
+                    <button onClick={handleClickClose}>
                         <RiCloseLargeLine />
                     </button>
                 </div>
