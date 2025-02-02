@@ -74,6 +74,11 @@ button:hover {
     background-color: #762ea6;
 }
 
+/*corrige o bug do react icon*/
+svg {
+    margin-top: .2rem;
+}
+
 .error {
     color: #ff0000;
     margin-top: .5rem;

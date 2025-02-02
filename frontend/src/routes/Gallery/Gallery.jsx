@@ -36,8 +36,6 @@ const Gallery = () => {
         setSelectedCard(item);
     }
 
-
-
     return (
         <div className={styles.containerGalery}>
             <h1>
