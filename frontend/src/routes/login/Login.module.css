@@ -8,12 +8,13 @@
     padding: .8rem;
 }
 
-.divContainer h1 {
+.formContainer h1 {
     font-size: 2rem;
     color: #361459;
+    text-align: center;
 }
 
-.divContainer p {
+.formContainer p {
     font-size: 1rem;
     color: #555;
 }

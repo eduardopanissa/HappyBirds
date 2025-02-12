@@ -8,14 +8,15 @@ import { useFetchDocs } from '../../hooks/useFetchDocs'
 import Card from "../../components/Card/Card"
 import CardDetails from '../../components/CardDetails/CardDetails'
 
+import { Swiper, SwiperSlide } from 'swiper/react'
+
 const Gallery = () => {
 
     const [gallery, setGallery] = useState([]);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [selectedCard, setSelectedCard] = useState(null);
-
+    const [selectedIndex, setSelectedIndex] = useState(null);
 
     useEffect(() => {
         getAssets()
@@ -31,9 +32,9 @@ const Gallery = () => {
         }
     }
 
-    const handleClickModal = (item) => {
+    const handleClickModal = (index) => {
         setIsModalOpen(true);
-        setSelectedCard(item);
+        setSelectedIndex(index);
     }
 
     return (
@@ -49,26 +50,27 @@ const Gallery = () => {
             </p>
             <div className={styles.containerCards}>
                 {
-                    gallery && gallery.map((item) => (
+                    gallery && gallery.map((item, index) => (
                         <Card
                             key={item.id}
                             img={item.image}
                             title={item.title}
-                            onClick={() => handleClickModal(item)}
+                            onClick={() => handleClickModal(index)}
                         />
                     ))
                 }
             </div>
+
             {
-                isModalOpen && selectedCard && (
+                isModalOpen && (
                     <CardDetails
-                        title={selectedCard.title}
-                        image={selectedCard.image}
-                        description={selectedCard.description}
                         onClose={() => setIsModalOpen(false)}
+                        gallery={gallery}
+                        index={selectedIndex}
                     />
                 )
             }
+
         </div>
     )
 }
