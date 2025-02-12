@@ -50,18 +50,21 @@ const Register = () => {
 
     return (
         <div className={styles.divContainer}>
-            <h1>
-                Cadastre-se para postar e acessar os conteúdos.
-            </h1>
-            <p className={styles.pCenter}>
-                Crie sua conta, e compartilhe com a gente.
-            </p>
 
             {error && <p className='error'>{error}</p>}
 
             {message && <p className='message'>{message}</p>}
 
             <form onSubmit={handleSubmit} className={styles.formContainer}>
+
+                <h1>
+                    Cadastre-se
+                </h1>
+
+                <p className={styles.pCenter}>
+                    Crie sua conta, e compartilhe com a gente.
+                </p>
+
                 <label>
                     <p>Nome:</p>
                     <input type="text" name="name" placeholder="Digite seu nome" required value={name} onChange={(e) => setName(e.target.value)} />
@@ -80,6 +83,7 @@ const Register = () => {
                 <button type='submit'>
                     Cadastrar
                 </button>
+
             </form>
 
         </div>

@@ -74,6 +74,9 @@ button:hover {
     background-color: #762ea6;
 }
 
+/* carousel*/
+
+
 /*corrige o bug do react icon*/
 svg {
     margin-top: .2rem;
