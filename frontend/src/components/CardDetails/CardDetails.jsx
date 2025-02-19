@@ -44,12 +44,12 @@ const CardDetails = ({ onClose, gallery, index }) => {
                 >
                     {
                         gallery.map((item) => {
-                            const { id, title, image, description } = item;
+                            const { _id, bird_name, image, description } = item;
 
                             return (
-                                <SwiperSlide key={id}>
+                                <SwiperSlide key={_id}>
                                     <div className={styles.divImgDesc}>
-                                        <img src={image} alt={title} className={styles.imgModal} />
+                                        <img src={image} alt={bird_name} className={styles.imgModal} />
 
                                         <h3 className={styles.cardDetailH3}>
                                             Informações
@@ -59,7 +59,7 @@ const CardDetails = ({ onClose, gallery, index }) => {
                                             {description}
                                         </p>
 
-                                        <NavLink href="#" target='blank'>Criado por: {title}</NavLink>
+                                        <NavLink href="#" target='blank'>Criado por: {bird_name}</NavLink>
 
                                     </div>
                                 </SwiperSlide>

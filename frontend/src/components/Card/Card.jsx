@@ -1,12 +1,12 @@
 
 import styles from './Card.module.css'
 
-const Card = ({ img, title, onClick }) => {
+const Card = ({ img, bird_name, onClick }) => {
     return (
         <div className={styles.card} onClick={onClick}>
-            <img src={img} alt={title} className={styles.imgClass} />
+            <img src={img} alt={bird_name} className={styles.imgClass} />
             <h3>
-                {title}
+                {bird_name}
             </h3>
         </div>
     )

@@ -4,30 +4,13 @@ import bgHome from '../../assets/bgHome2.jpg';
 
 import { Link } from "react-router-dom"
 
-import { useEffect, useState } from 'react';
-
 import { useFetchDocs } from '../../hooks/useFetchDocs';
+
 import Card from '../../components/Card/Card';
 
 const Home = () => {
 
-    const [images, setImages] = useState([]);
-
-    const getAssets = async () => {
-        try {
-            const fetchDocs = useFetchDocs();
-            const data = await fetchDocs();
-
-            setImages(data.slice(0, 2));
-
-        } catch (error) {
-            console.log('erro ao buscar dados', error)
-        }
-    }
-
-    useEffect(() => {
-        getAssets();
-    }, [])
+    const { data: images, loading, error } = useFetchDocs();
 
     return (
         <div className={styles.container}>
@@ -62,19 +45,23 @@ const Home = () => {
 
             </div>
 
-
-
             <div className={styles.divWrapperGallery}>
                 <div className={styles.divGallery}>
                     <h1>
                         Confira as postagens mais recentes!
                     </h1>
                     {
+                        loading && <p>Carregando...</p>
+                    }
+                    {
+                        error && <p>{error.message}</p>
+                    }
+                    {
                         images && images.map((item) => (
                             <Card
-                                key={item.id}
+                                key={item._id}
                                 img={item.image}
-                                title={item.title} />
+                                bird_name={item.bird_name} />
                         ))
                     }
                 </div>

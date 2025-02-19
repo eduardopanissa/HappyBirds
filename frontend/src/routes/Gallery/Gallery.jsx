@@ -6,31 +6,21 @@ import { useEffect, useState } from "react"
 import { useFetchDocs } from '../../hooks/useFetchDocs'
 
 import Card from "../../components/Card/Card"
+
 import CardDetails from '../../components/CardDetails/CardDetails'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
 
 const Gallery = () => {
 
-    const [gallery, setGallery] = useState([]);
+    const { data: gallery, loading, error } = useFetchDocs();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [selectedIndex, setSelectedIndex] = useState(null);
 
-    useEffect(() => {
-        getAssets()
-    }, [])
+    if (loading) return <p>Carregando...</p>;
 
-    const getAssets = async () => {
-        try {
-            const fetchDocs = useFetchDocs();
-            const data = await fetchDocs();
-            setGallery(data)
-        } catch (error) {
-            console.log('erro ao buscar assets', error)
-        }
-    }
+    if (error) return <p>Erro:{error}</p>;
 
     const handleClickModal = (index) => {
         setIsModalOpen(true);
@@ -48,13 +38,14 @@ const Gallery = () => {
             <p>
                 Confira todas as espécies disponíveis
             </p>
+
             <div className={styles.containerCards}>
                 {
                     gallery && gallery.map((item, index) => (
                         <Card
-                            key={item.id}
+                            key={item._id}
                             img={item.image}
-                            title={item.title}
+                            bird_name={item.bird_name}
                             onClick={() => handleClickModal(index)}
                         />
                     ))
