@@ -3,7 +3,7 @@ import styles from './CardDetails.module.css'
 
 import { useState } from 'react';
 
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { RiCloseLargeLine } from "react-icons/ri";
 
@@ -59,7 +59,11 @@ const CardDetails = ({ onClose, gallery, index }) => {
                                             {description}
                                         </p>
 
-                                        <NavLink href="#" target='blank'>Criado por: {bird_name}</NavLink>
+                                        <div>
+                                            <Link to="#" target='blank'>Criado por: {bird_name}</Link>
+
+                                            <Link to={`/post/editPost/${_id}`}>Editar</Link>
+                                        </div>
 
                                     </div>
                                 </SwiperSlide>

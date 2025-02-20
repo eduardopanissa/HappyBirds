@@ -3,10 +3,7 @@ import api from "../services/api";
 
 import { useEffect, useState } from "react";
 
-export function useDeleteDoc(id) {
-
-    //memory leak
-    const [cancelled, setCancelled] = useState(false);
+export function useDeleteDoc() {
 
     const [loading, setLoading] = useState(false);
 
@@ -14,39 +11,29 @@ export function useDeleteDoc(id) {
 
     const [message, setMessage] = useState('');
 
-    useEffect(() => {
-        const deleteDoc = async () => {
-            if (cancelled) return setError('Cancelado.');
+    const deleteDoc = async (id) => {
 
-            if (!id) return setError('Sem identificação.');
+        if (!id) return setError('Sem identificação.');
 
-            setLoading(true);
-            setError(null);
-            setMessage('');
+        setLoading(true);
+        setError(null);
+        setMessage('');
 
-            try {
-                await api.delete(`/api/pictures/${id}`);
+        try {
+            await api.delete(`/api/pictures/${id}`);
 
-                setMessage('Apagado com sucesso.');
+            setMessage('Apagado com sucesso.');
 
-            } catch (error) {
-                setError(error.message || 'Erro ao Deletar');
+        } catch (error) {
+            setError(error.message || 'Erro ao Deletar');
 
-            } finally {
-                setLoading(false);
-
-            }
+        } finally {
+            setLoading(false);
 
         }
 
-        deleteDoc();
+    }
 
-    }, [cancelled])
-
-    useEffect(() => {
-        return () => setCancelled(true);
-    }, [])
-
-    return { loading, error, message }
+    return { deleteDoc, loading, error, message }
 
 }

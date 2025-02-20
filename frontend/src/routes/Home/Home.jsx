@@ -99,7 +99,7 @@ const Home = () => {
             </div>
 
             <button>
-                <Link to='/createPost'>
+                <Link to='/post/createPost'>
                     Link Criar Post
                 </Link>
             </button>

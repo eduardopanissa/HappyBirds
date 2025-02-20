@@ -102,7 +102,7 @@ const CreatePost = () => {
                     <textarea name="description" id="description" placeholder="Foto tirada no parque Nacional Bem-te-vi em Arceburgo - MG" value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
                 </label>
 
-                <button type='submit'>
+                <button type='submit' >
                     Criar Registro
                 </button>
             </form>

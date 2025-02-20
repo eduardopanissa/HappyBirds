@@ -10,6 +10,7 @@ import About from './routes/About/About'
 import Register from './routes/Register/Register'
 import Gallery from './routes/Gallery/Gallery'
 import CreatePost from './routes/CreatePost/CreatePost'
+import EditPost from './routes/EditPost/EditPost'
 
 const router = createBrowserRouter([
   {
@@ -37,8 +38,12 @@ const router = createBrowserRouter([
         element: <Register />
       },
       {
-        path: '/createPost',
+        path: '/post/createPost',
         element: <CreatePost />
+      },
+      {
+        path: '/post/editPost/:id',
+        element: <EditPost />
       }
     ]
   }
