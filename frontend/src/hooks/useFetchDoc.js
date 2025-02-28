@@ -5,9 +5,6 @@ import { useEffect, useState } from "react";
 
 export function useFetchDoc(id) {
 
-    //memory leak
-    const [cancelled, setCancelled] = useState(false);
-
     const [loading, setLoading] = useState(false);
 
     const [error, setError] = useState(null);
@@ -16,8 +13,6 @@ export function useFetchDoc(id) {
 
     useEffect(() => {
         const fetchDoc = async () => {
-
-            // if (cancelled) return;
 
             if (!id) return;
 
@@ -42,12 +37,7 @@ export function useFetchDoc(id) {
 
         fetchDoc();
 
-    }, [cancelled, id]);
-
-    useEffect(() => {
-        return () => setCancelled(true);
-
-    }, [])
+    }, [id]);
 
     return { data, loading, error };
 

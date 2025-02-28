@@ -1,9 +1,13 @@
+import styles from './EditPost.module.css'
 
 import { useFetchDoc } from "../../hooks/useFetchDoc"
 
 import { useDeleteDoc } from "../../hooks/useDeleteDoc"
 
-import { useParams, useNavigate } from "react-router-dom"
+import { useUpdateDoc } from "../../hooks/useUpdateDoc"
+
+import { useParams, useNavigate, Link } from "react-router-dom"
+
 import { useEffect, useState } from "react";
 
 const EditPost = () => {
@@ -14,11 +18,37 @@ const EditPost = () => {
 
     const { loading: deleteLoading, error: deleteError, message: deleteMessage, deleteDoc } = useDeleteDoc();
 
-    const [showMessage, setShowMessage] = useState(true);
+    const { loading: updateLoading, error: updateError, message: updateMessage, updateDoc } = useUpdateDoc();
 
-    const [showError, setShowError] = useState(true);
+    const [showDeleteMessage, setShowDeleteMessage] = useState(false);
 
-    const [showErrorGet, setShowErrorGet] = useState(true);
+    const [showUpdateMessage, setShowUpdateMessage] = useState(false);
+
+    const [showDeleteError, setShowDeleteError] = useState(false);
+
+    const [showUpdateError, setShowUpdateError] = useState(false);
+
+    const [showErrorGet, setShowErrorGet] = useState(false);
+
+    //setInputs
+    const [image, setImage] = useState('');
+    const [bird_name, setBird_Name] = useState('');
+    const [description, setDescription] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!image || !bird_name || !description || !id) return;
+
+        const payload = {
+            "bird_name": bird_name,
+            "image": image,
+            "description": description
+        }
+
+        updateDoc(id, payload);
+
+    }
 
     const navigate = useNavigate();
 
@@ -26,74 +56,167 @@ const EditPost = () => {
         if (window.confirm('Deseja deletar esse item?')) {
             await deleteDoc(id);
 
-            // if (!deleteError) return;
+            return;
         }
 
     }
 
     useEffect(() => {
+        if (picture) {
+            setBird_Name(picture.bird_name);
+            setImage(picture.image);
+            setDescription(picture.description);
+
+        };
+
+    }, [picture]);
+
+    useEffect(() => {
 
         if (error) {
+            setShowErrorGet(true);
+
             const timeError = setTimeout(() => {
                 setShowErrorGet(false);
 
-            }, 2000);
+            }, 1000);
 
             return () => clearTimeout(timeError);
         }
 
         if (deleteMessage) {
+            setShowDeleteMessage(true);
+
             const timeMessage = setTimeout(() => {
-                setShowMessage(false);
+                setShowDeleteMessage(false);
 
-                navigate('/gallery')
+                navigate('/gallery');
 
-            }, 2000);
+            }, 1000);
 
             return () => clearTimeout(timeMessage);
         }
 
-        if (deleteError) {
-            const timeError = setTimeout(() => {
-                setShowError(false);
+        if (updateMessage) {
+            setShowUpdateMessage(true);
 
-            }, 2000);
+            const timeUpdateMessage = setTimeout(() => {
+                setShowUpdateMessage(false);
 
-            return () => clearTimeout(timeError);
+                navigate('/gallery');
+
+            }, 1000);
+
+            return () => clearTimeout(timeUpdateMessage);
         }
-    }, [error, deleteMessage, deleteError]);
+
+        if (updateError) {
+            setShowUpdateError(true);
+
+            const timeUpdateError = setTimeout(() => {
+                setShowUpdateError(false);
+
+            }, 1000);
+
+            return () => clearTimeout(timeUpdateError);
+        }
+
+        if (deleteError) {
+            setShowDeleteError(true);
+
+            const timeDeleteError = setTimeout(() => {
+                setShowDeleteError(false);
+
+            }, 1000);
+
+            return () => clearTimeout(timeDeleteError);
+        }
+
+    }, [error, deleteMessage, deleteError, updateMessage, updateError]);
 
     return (
         <div>
-            <h1>
-                Edit Post
-            </h1>
+
             {
-                (loading || deleteLoading) && <p>Carregando...</p>
+                (loading || deleteLoading || updateLoading) && <p>Carregando...</p>
             }
             {
                 showErrorGet && <p>{error}</p>
             }
             {
-                showMessage && <p>{deleteMessage}</p>
+                showUpdateError && <p>{updateError}</p>
             }
             {
-                showError && <p>{deleteError}</p>
+                showUpdateMessage && <p>{updateMessage}</p>
             }
+            {
+                showDeleteMessage && <p>{deleteMessage}</p>
+            }
+            {
+                showDeleteError && <p>{deleteError}</p>
+            }
+
             {
                 picture && (
-                    <>
-                        <h2>
-                            {picture.bird_name}
-                        </h2>
-                        <img src={picture.image} alt={picture.bird_name} width='300px' />
-                        <p>
-                            {picture.description}
-                        </p>
-                        <button onClick={handleDelete}>
-                            Deletar
-                        </button>
-                    </>
+                    <div className={styles.editPostContainer}>
+
+                        <div className={styles.editPostHeader}>
+                            <h1>
+                                Editar Postagem
+                            </h1>
+
+                            <button>
+                                <Link to={`/post/${picture._id}`}>
+                                    Voltar
+                                </Link>
+                            </button>
+                        </div>
+
+                        <form onSubmit={handleSubmit} className={styles.editPostForm}>
+                            <label>
+
+                                <p>
+                                    Nome da espécie:
+                                </p>
+
+                                <input type='text' name='bird_name' placeholder='Bem-te-vi, Beija Flor' value={bird_name} onChange={(e) => setBird_Name(e.target.value)} required />
+
+                            </label>
+
+                            <label>
+
+                                <p>
+                                    URL da imagem/Upload imagem
+                                </p>
+
+                                <input type='text' name='image' placeholder='Coloque a URL ' value={image} onChange={(e) => setImage(e.target.value)} required />
+
+                            </label>
+
+                            <img src={image} alt={bird_name} width='150px' height='150px' />
+
+                            <label>
+
+                                <p>
+                                    Descrição:
+                                </p>
+
+                                <textarea name="description" id="description" placeholder="Foto tirada no parque Nacional Bem-te-vi em Arceburgo - MG" value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
+
+                            </label>
+
+                            <div className={styles.editPostFooter}>
+                                <button type='submit'>
+                                    Atualizar
+                                </button>
+
+                                <button onClick={handleDelete}>
+                                    Deletar
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
 
                 )
             }

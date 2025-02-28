@@ -22,12 +22,16 @@ export function usePostDoc(payload) {
             setMessage('');
 
             try {
-                await api.post('/api/pictures', payload);
+                const response = await api.post('/api/pictures', payload);
 
-                setMessage('Postagem feita com sucesso!');
+                if (response.status === 201) {
+                    setMessage('Postagem feita com sucesso!');
+                } else {
+                    setError(response.message || 'Erro ao postar...')
+                }
 
             } catch (error) {
-                setError(error.message || 'Erro ao postar');
+                setError(error.message || 'Erro ao postar...');
 
             } finally {
                 setLoading(false);

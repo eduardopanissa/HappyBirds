@@ -11,6 +11,7 @@ import Register from './routes/Register/Register'
 import Gallery from './routes/Gallery/Gallery'
 import CreatePost from './routes/CreatePost/CreatePost'
 import EditPost from './routes/EditPost/EditPost'
+import Post from './routes/Post/Post'
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: '/post/editPost/:id',
         element: <EditPost />
+      },
+      {
+        path: '/post/:id',
+        element: <Post />
       }
     ]
   }

@@ -3,7 +3,7 @@ import styles from './CardDetails.module.css'
 
 import { useState } from 'react';
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { RiCloseLargeLine } from "react-icons/ri";
 
@@ -24,12 +24,14 @@ const CardDetails = ({ onClose, gallery, index }) => {
 
     }
 
+    const navigate = useNavigate();
+
     return (
         <div className={`${styles.divModal} ${isClosing ? styles.fadeOut : ''}`}>
             <div className={styles.divContainer}>
                 <div className={styles.divHeadModal}>
                     <h1>
-                        Descrição
+                        Informações
                     </h1>
                     <button onClick={handleClickClose}>
                         <RiCloseLargeLine />
@@ -49,21 +51,24 @@ const CardDetails = ({ onClose, gallery, index }) => {
                             return (
                                 <SwiperSlide key={_id}>
                                     <div className={styles.divImgDesc}>
+
                                         <img src={image} alt={bird_name} className={styles.imgModal} />
 
+                                        <h2>
+                                            {bird_name}
+                                        </h2>
+
                                         <h3 className={styles.cardDetailH3}>
-                                            Informações
+                                            Descrição
                                         </h3>
 
                                         <p className={styles.pImgDesc}>
                                             {description}
                                         </p>
 
-                                        <div>
-                                            <Link to="#" target='blank'>Criado por: {bird_name}</Link>
-
-                                            <Link to={`/post/editPost/${_id}`}>Editar</Link>
-                                        </div>
+                                        <button className={styles.buttonRead} onClick={() => navigate(`/post/${_id}`)}>
+                                            Ler
+                                        </button>
 
                                     </div>
                                 </SwiperSlide>
@@ -73,7 +78,7 @@ const CardDetails = ({ onClose, gallery, index }) => {
                 </Swiper>
 
             </div>
-        </div>
+        </div >
     )
 }
 

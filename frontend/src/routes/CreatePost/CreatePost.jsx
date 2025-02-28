@@ -50,7 +50,7 @@ const CreatePost = () => {
 
                 navigate('/gallery');
 
-            }, 2000);
+            }, 1000);
 
             return () => clearTimeout(timeMessage);
         }
@@ -59,7 +59,7 @@ const CreatePost = () => {
             const timeError = setTimeout(() => {
                 setShowError(false);
 
-            }, 2000);
+            }, 1000);
 
             return () => clearTimeout(timeError);
         }

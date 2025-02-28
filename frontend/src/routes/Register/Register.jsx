@@ -7,7 +7,7 @@ import { useState } from "react"
 
 const Register = () => {
 
-    const createUser = useCreateUser();
+    const { createUser } = useCreateUser();
 
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');

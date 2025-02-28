@@ -64,6 +64,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: left;
 }
 
 .imgModal {
@@ -79,6 +80,7 @@
 
 .pImgDesc {
     max-width: 750px;
+    min-height: 250px;
     width: 100%;
     height: 100%;
     background-color: #361459;
@@ -86,6 +88,11 @@
     border-radius: .3rem;
     padding: 1rem;
     box-shadow: 0 6px 8px 3px rgba(0, 0, 0, 0.3);
+}
+
+.buttonRead {
+    max-width: 750px;
+    width: 100%;
 }
 
 .divImgDesc a {
