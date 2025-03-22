@@ -29,7 +29,7 @@ h2,
 h3,
 p {
     margin-bottom: .8rem;
-    padding: .2rem
+    padding: .2rem;
 }
 
 input,
@@ -43,7 +43,7 @@ textarea {
 }
 
 textarea {
-    height: 200px;
+    height: 12.5rem;
 }
 
 input:focus,

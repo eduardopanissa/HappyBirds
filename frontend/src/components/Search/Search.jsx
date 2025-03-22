@@ -52,7 +52,7 @@ const Search = () => {
 
             <div className={styles.divSearchInput}>
 
-                <input type='text' name='searchByName' placeholder='Digite um nome para buscar...' value={searchByName} onChange={(e) => setSearchByName(e.target.value)} />
+                <input type='text' id='searchByName' name='searchByName' placeholder='Digite um nome para buscar...' value={searchByName} onChange={(e) => setSearchByName(e.target.value)} />
 
             </div>
 
